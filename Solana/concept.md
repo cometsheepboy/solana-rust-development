@@ -21,20 +21,6 @@ Compared to older platforms like Bitcoin and Ethereum, Solana is:
 - Symmetric Cryptography is where the same key is used to encrypt and decrypt
 - Asymmetric Cryptography is also called 'public key cryptography' (if it's encrypted with a public key, only the secret key from the same keypair can be used to read it)
 
-### keypairs operation
-- keypair generator
-import { Keypair } from "@solana/web3.js";
-const keypair = Keypair.generate();
-console.log(`✅ Generated keypair!`);
-
-- loading an existing keypair from .env file
-import "dotenv/config";
-import { getKeypairFromEnvironment } from "@solana-developers/helpers";
-const keypair = getKeypairFromEnvironment("SECRET_KEY");
-console.log(
-  `✅ Finished! We've loaded our secret key securely, using an env file!`,
-);
-
 ## SOL, Accounts, Addresses
 - SOL is the name of Solana's native token. Each SOL is made from 1 billion Lamports.
 - Accounts store tokens, NFTs, programs, and data.
@@ -43,17 +29,3 @@ console.log(
 ## Lamports
 - 1 SOL = 1,000,000,000 Lamports (1 billion Lamports)
 - Lamports are analogous to "wei" in Ethereum or "satoshis" in Bitcoin, making them useful for handling microtransactions or precise calculations on the Solana network.
-
-### Example Code - The balance for the wallet at address ${publicKey} is ${balanceInSOL}
-import { Connection, LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
-const suppliedPublicKey = process.argv[2];
-if (!suppliedPublicKey) {
-  throw new Error("Provide a public key to check the balance of!");
-}
-const connection = new Connection("https://api.devnet.solana.com", "confirmed");
-const publicKey = new PublicKey(suppliedPublicKey);
-const balanceInLamports = await connection.getBalance(publicKey);
-const balanceInSOL = balanceInLamports / LAMPORTS_PER_SOL;
-console.log(
-  `✅ Finished! The balance for the wallet at address ${publicKey} is ${balanceInSOL}!`,
-);
