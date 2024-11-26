@@ -16,3 +16,8 @@ Compared to older platforms like Bitcoin and Ethereum, Solana is:
 - The public key is used as an “address” that points to an account on the Solana network. A public key can be shared with anyone.
 - The secret key is used to verify authority over the account. As the name suggests, you should always keep secret keys secret.
 - [@solana/web3.js] provides helper functions for creating a brand new keypair, or for constructing a keypair using an existing secret key.
+
+### Symmetric and Asymmetric Cryptography
+- Symmetric Cryptography is where the same key is used to encrypt and decrypt
+- Asymmetric Cryptography is also called 'public key cryptography' (if it's encrypted with a public key, only the secret key from the same keypair can be used to read it)
+
