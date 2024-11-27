@@ -29,3 +29,17 @@ Compared to older platforms like Bitcoin and Ethereum, Solana is:
 ## Lamports
 - 1 SOL = 1,000,000,000 Lamports (1 billion Lamports)
 - Lamports are analogous to "wei" in Ethereum or "satoshis" in Bitcoin, making them useful for handling microtransactions or precise calculations on the Solana network.
+
+## Transactions on the Solana Network
+All modifications to onchain data happen through transactions. Transactions are mostly a set of instructions that invoke Solana programs. Transactions are atomic, meaning they either succeed - if all the instructions have been executed properly - or fail as if the transaction hasn't been run at all.
+
+### Transactions are atomic
+A transaction on Solana is similar to a transaction elsewhere: it is atomic. **Atomic means the entire transaction runs or fails.**
+Atomic means either the transaction happens - meaning all the individual steps succeed - or the entire transaction fails.
+
+### Transactions contain instructions
+The steps within a transaction on Solana are called instructions.
+Each instruction contains:
+- an array of accounts that will be read from and/or written to. This is what makes Solana fast - transactions that affect different accounts  are processed simultaneously
+- the public key of the program to invoke
+- data passed to the program being invoked, structured as a byte array
