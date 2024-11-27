@@ -43,3 +43,9 @@ Each instruction contains:
 - an array of accounts that will be read from and/or written to. This is what makes Solana fast - transactions that affect different accounts  are processed simultaneously
 - the public key of the program to invoke
 - data passed to the program being invoked, structured as a byte array
+
+### About Wallets
+- **Wallets** store your secret key and allow users to sign transactions
+- **Hardware wallets** store your secret key on a separate device
+- **Software wallets** use your computer for secure storage. On desktops, software wallets are often browser extensions that add the ability to connect to a wallet from a website. On mobile, wallet apps have their own browsers.
+- **Solana's Wallet Adapter** allows you to build websites that can request a user's wallet address and propose transactions for them to sign
