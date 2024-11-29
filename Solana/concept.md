@@ -76,3 +76,41 @@ Each instruction contains:
 #### UMI Instance
 Umi is a framework for making JS/TS clients for onchain programs, that was created by Metaplex. Umi can create JS/TS clients for many programs, but in practice, it's most commonly used to communicate to the Token Metadata program.
 Note that Umi has different implementations for many concepts than web3.js, including Keypairs, PublicKeys, and Connections. However, it is easy to convert from web3.js versions of these items to the Umi equivalents.
+
+## Solana Onchain Development
+- Onchain programs (sometimes called 'smart contracts') run directly on Solana, just like programs on your computer.
+- These programs consist of instruction handlers - functions that process instructions from transactions.
+- Programs interact with the blockchain by reading from and writing to Solana accounts.
+- Solana programs are most commonly written in **Rust**, often using the **Anchor** framework for simplified development.
+- Anchor generates **Interface Description Language (IDL)** files, which:
+    - Describe the program's structure and functionality
+    - Enable automatic creation of JavaScript/TypeScript client libraries
+- Solana's architecture allows for parallel execution of non-overlapping transactions, contributing to its high speed and efficiency.
+- Rent is a concept in Solana where accounts must maintain a minimum balance to stay alive on the blockchain.
+
+## Program Derived Addresses (PDAs): Solana's Key-Value Store
+Data for Solana programs are stored in **program-derived addresses (PDAs)**. Solana's PDAs can be thought of as a **key/value store**. A PDA can be designed to store any form of data as required by the program.
+1. Structure
+- Key: The PDA's address
+- Value: Data stored in the account at that address
+2. Address Generation
+- Seed: chosen by the programmer
+- Bump: An additional value to ensure unique PDA creation
+- Deterministic: Same combination of seed and bump always produce the same address. This helps the program and the client to accurately determine the address of the data.
+3. Data Storage
+- Programmers define the structure of data stored in PDAs
+- Can store any type of program-specific information
+4. Some properties:
+- PDAs are off the Ed25519 elliptic curve. While the data type web3.js uses is a PublicKey, PDA addresses are not public keys and do not have a matching private key.
+- A program's PDAs are unique so, they won't conflict with other programs.
+- PDAs can also act as signer in an instruction. We'll learn more about this in further lessons.
+
+### Benefits
+1. Uniqueness: PDAs are specific to your program, avoiding conflicts
+2. Determinism: Consistent address generation across clients and on-chain programs
+3. Flexibility: Can store various types of data structures
+4. Efficiency: Quick lookup and access to program-specific data
+
+## Ed25519 curve
+Ed25519 is a specific implementation of the **Edwards-curve Digital Signature Algorithm (EdDSA)** that uses the **Curve25519** elliptic curve. It is widely used for cryptographic operations, especially in secure communications.
+Ed25519 is widely used in protocols like SSH, TLS, and in cryptocurrencies for signing transactions or managing keys.
